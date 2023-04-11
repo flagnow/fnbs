@@ -1,0 +1,19 @@
+{
+  "FilePath": "/Users/pedromaia/Desktop/Projects/Flagnow/fnbs/fnbs.csproj",
+  "Configuration": {
+    "ConfigurationName": "MVC-3.0",
+    "LanguageVersion": "6.0",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-3.0"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 1000
+  },
+  "RootNamespace": "fnbs",
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}
