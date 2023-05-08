@@ -18,7 +18,7 @@ public class ResponseWrapper<T>
 
     public void SetSuccessStatus()
     {
-        if (this.statusCode >= 400 && this.statusCode < 200)
+        if (this.statusCode >= 400 & this.statusCode < 200)
             this.success = false;
     }
 

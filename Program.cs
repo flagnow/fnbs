@@ -2,11 +2,15 @@ using fnbs.Core.Models.ServicesContract;
 using fnbs.Core.RepoContract;
 using fnbs.Core.Services;
 using fnbs.Infra.Repo;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<Context>();
+builder.Services.AddDbContext<Context>(options =>
+    options.UseNpgsql(
+        ""));
+
 
 builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddScoped<IUserService, UserService>();
