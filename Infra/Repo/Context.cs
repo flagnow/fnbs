@@ -12,4 +12,5 @@ public class Context : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<AbList> AbList { get; set; }
     public DbSet<Scope> Scopes { get; set; }
+    public DbSet<Analytics> Analytics { get; set; }
 }
