@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<Context>(options =>
     options.UseNpgsql(
-        "User Id=postgres;Password=fydqum-puBzy3-cydpyt;Server=db.giyrsyklsjpsrevgdptc.supabase.co;Port=5432;Database=postgres"));
+        "User Id=postgres;Password=if0X4OnBgGJDElLR;Server=db.giyrsyklsjpsrevgdptc.supabase.co;Port=5432;Database=postgres"));
 
 
 builder.Services.AddScoped<IUserRepo, UserRepo>();

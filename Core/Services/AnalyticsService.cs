@@ -29,12 +29,14 @@ public class AnalyticsService : IAnalyticsService
         var analytics = new Analytics()
         {
             Action = a.Action,
-            CreatedAt = new DateTime(),
+            CreatedAt = DateTime.UtcNow,
             UserId = a.UserId
         };
         try
         {
             await _db.Analytics.AddAsync(analytics);
+            await _db.SaveChangesAsync()
+                ;
 
             return response.SetData(analytics).SetStatus(200).SetMessage("Criado com sucesso").Build();
         }
