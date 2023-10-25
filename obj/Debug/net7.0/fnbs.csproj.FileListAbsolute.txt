@@ -31,7 +31,6 @@
 /Users/pedromaia/Desktop/Projects/Flagnow/fnbs/obj/Debug/net7.0/fnbs.pdb
 /Users/pedromaia/Desktop/Projects/Flagnow/fnbs/obj/Debug/net7.0/fnbs.genruntimeconfig.cache
 /Users/pedromaia/Desktop/Projects/Flagnow/fnbs/obj/Debug/net7.0/ref/fnbs.dll
-/Users/pedromaia/Desktop/Projects/Flagnow/fnbs/bin/Debug/net7.0/global.json
 /Users/pedromaia/Desktop/Projects/Flagnow/fnbs/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
 /Users/pedromaia/Desktop/Projects/Flagnow/fnbs/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Abstractions.dll
 /Users/pedromaia/Desktop/Projects/Flagnow/fnbs/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.InMemory.dll

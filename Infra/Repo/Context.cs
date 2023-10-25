@@ -13,4 +13,5 @@ public class Context : DbContext
     public DbSet<AbList> AbList { get; set; }
     public DbSet<Scope> Scopes { get; set; }
     public DbSet<Analytics> Analytics { get; set; }
+    public DbSet<FeatureFlag> FeatureFlag { get; set; }
 }

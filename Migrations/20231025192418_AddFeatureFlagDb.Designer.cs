@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using fnbs.Infra.Repo;
@@ -11,9 +12,11 @@ using fnbs.Infra.Repo;
 namespace fnbs.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20231025192418_AddFeatureFlagDb")]
+    partial class AddFeatureFlagDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,36 +74,6 @@ namespace fnbs.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Analytics");
-                });
-
-            modelBuilder.Entity("fnbs.Core.Models.FeatureFlag", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("GroupA")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("GroupB")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<long>("ScopeId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ScopeId");
-
-                    b.ToTable("FeatureFlag");
                 });
 
             modelBuilder.Entity("fnbs.Core.Models.Scope", b =>
@@ -171,17 +144,6 @@ namespace fnbs.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("fnbs.Core.Models.FeatureFlag", b =>
-                {
-                    b.HasOne("fnbs.Core.Models.Scope", "Scope")
-                        .WithMany()
-                        .HasForeignKey("ScopeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Scope");
                 });
 #pragma warning restore 612, 618
         }

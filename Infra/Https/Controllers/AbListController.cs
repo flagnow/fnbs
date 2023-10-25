@@ -22,4 +22,12 @@ public class AbListController : ControllerBase
 
         return StatusCode(response.statusCode, response);
     }
+
+    [HttpGet("listscope/{scopeID:long}")]
+    public async Task<IActionResult> ListAbTest(Int64 scopeID)
+    {
+        var response = await _ab.ListAbByScopeID(scopeID);
+
+        return StatusCode(response.statusCode, response);
+    }
 }

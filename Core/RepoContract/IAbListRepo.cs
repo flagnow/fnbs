@@ -1,10 +1,12 @@
 using fnbs.Core.Models;
+using fnbs.Core.Models.Dtos.Out;
 
 namespace fnbs.Core.RepoContract;
 
 public interface IAbListRepo
 {
-    Task<AbList> GetAbById(Int64 id);
-    Task<AbList> GetAbByUserAndScope(Int64 userId, Int64 scopeId);
-    Task<AbList> CreateAbForUser(AbList ab);
+    Task<AbListResponse> GetAbById(Int64 id);
+    Task<AbListResponse> GetAbByUserAndScope(Int64 userId, Int64 scopeId);
+    Task<AbListResponse> CreateAbForUser(AbList ab);
+    Task<List<AbList>> ListAbParticipants(Int64 scopeId);
 }

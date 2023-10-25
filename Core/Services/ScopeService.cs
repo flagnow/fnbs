@@ -1,5 +1,6 @@
 using fnbs.Core.Models;
 using fnbs.Core.Models.Dtos;
+using fnbs.Core.Models.Dtos.Out;
 using fnbs.Core.Models.ServicesContract;
 using fnbs.Core.RepoContract;
 
@@ -21,6 +22,16 @@ public class ScopeService : IScopesService
         var repoResponse = await _scopes.CreateScope(u);
         response.SetMessage("Scope criado com sucesso").SetData(repoResponse).SetStatus(201);
 
+
+        return response.Build();
+    }
+
+    public async Task<ResponseWrapper<List<ScopeAdminDTO>>> ListScopes()
+    {
+        var response = new ResponseWrapper<List<ScopeAdminDTO>>.Builder();
+
+        var repoResponse = await _scopes.ListScopes();
+        response.SetData(repoResponse);
 
         return response.Build();
     }

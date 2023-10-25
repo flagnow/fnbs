@@ -1,4 +1,5 @@
 using fnbs.Core.Models;
+using fnbs.Core.Models.Dtos.Out;
 using fnbs.Core.RepoContract;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,5 +24,17 @@ public class ScopeRepo : IScopeRepo
     public async Task<Scope> GetScopeById(long id)
     {
         return await _db.Scopes.FirstOrDefaultAsync(x => x.Id == id);
+    }
+
+    public async Task<List<ScopeAdminDTO>> ListScopes()
+    {
+        return await _db.Scopes.Select(x => new ScopeAdminDTO
+        {
+            AbPercentage = x.AbPercentage,
+            Description = x.Description,
+            Id = x.Id,
+            Participants = _db.AbList.Where(e => e.ScopeId == x.Id).Count(),
+            UpDateTime = x.UpDateTime
+        }).ToListAsync();
     }
 }

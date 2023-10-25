@@ -8,8 +8,6 @@ namespace fnbs.Controllers;
 [Route("[controller]")]
 public class ScopesController : ControllerBase
 {
-
-
     private readonly ILogger<ScopesController> _logger;
     private readonly IScopesService _scopesService;
 
@@ -22,8 +20,15 @@ public class ScopesController : ControllerBase
     [HttpPost(Name = "Create scope")]
     public async Task<IActionResult> CreateScope(Scope s)
     {
-        var response =  await _scopesService.CreateScope(s);
-        
+        var response = await _scopesService.CreateScope(s);
+
+        return StatusCode(response.statusCode, response);
+    }
+
+    [HttpGet(Name = "List scopes")]
+    public async Task<IActionResult> ListScopes()
+    {
+        var response = await _scopesService.ListScopes();
         return StatusCode(response.statusCode, response);
     }
 }

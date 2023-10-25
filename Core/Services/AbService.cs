@@ -1,5 +1,6 @@
 using fnbs.Core.Models;
 using fnbs.Core.Models.Dtos;
+using fnbs.Core.Models.Dtos.Out;
 using fnbs.Core.Models.ServicesContract;
 using fnbs.Core.RepoContract;
 
@@ -18,9 +19,9 @@ public class AbService : IAbListService
         _user = user;
     }
 
-    public async Task<ResponseWrapper<AbList>> GetAbList(long userId, long scopeid)
+    public async Task<ResponseWrapper<AbListResponse>> GetAbList(long userId, long scopeid)
     {
-        var response = new ResponseWrapper<AbList>.Builder();
+        var response = new ResponseWrapper<AbListResponse>.Builder();
         var resGetScopeById = await _scopes.GetScopeById(scopeid);
         var resGetUserById = await _user.GetUserBydId(userId);
 
@@ -55,5 +56,13 @@ public class AbService : IAbListService
         }
 
         return response.SetData(resGetAbByUserAndScope).SetStatus(200).Build();
+    }
+
+    public async Task<ResponseWrapper<List<AbList>>> ListAbByScopeID(long scopeid)
+    {
+        var response = new ResponseWrapper<List<AbList>>.Builder();
+
+        var q = await _ab.ListAbParticipants(scopeid);
+        return response.SetData(q).Build();
     }
 }
