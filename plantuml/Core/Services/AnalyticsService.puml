@@ -1,0 +1,7 @@
+@startuml
+class AnalyticsService {
+    + AnalyticsService(ab:IAbListRepo, scope:IScopeRepo, user:IUserRepo, db:Context)
+    + <<async>> AddAnalytics(a:CreateAnalyticsDTO) : Task<ResponseWrapper<Analytics>>
+}
+IAnalyticsService <|-- AnalyticsService
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+class FeatureFlagController {
+    + FeatureFlagController(ab:IFeatureFlagService)
+    + <<async>> CreateFeature(s:CreateFeatureFlag) : Task<IActionResult>
+    + <<async>> ListFeatureFlags(scopeId:long) : Task<IActionResult>
+    + <<async>> UpdateAFeature(scopeId:long, s:CreateFeatureFlag) : Task<IActionResult>
+}
+ControllerBase <|-- FeatureFlagController
+@enduml

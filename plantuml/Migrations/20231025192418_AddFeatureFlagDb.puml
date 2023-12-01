@@ -1,0 +1,5 @@
+@startuml
+class AddFeatureFlagDb <<partial>> {
+}
+Migration <|-- AddFeatureFlagDb
+@enduml

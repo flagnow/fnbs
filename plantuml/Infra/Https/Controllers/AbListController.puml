@@ -1,0 +1,8 @@
+@startuml
+class AbListController {
+    + AbListController(ab:IAbListService)
+    + <<async>> GetAbTest(userId:Int64, scopeID:Int64) : Task<IActionResult>
+    + <<async>> ListAbTest(scopeID:Int64) : Task<IActionResult>
+}
+ControllerBase <|-- AbListController
+@enduml

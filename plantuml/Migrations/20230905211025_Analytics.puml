@@ -1,0 +1,5 @@
+@startuml
+class Analytics <<partial>> {
+}
+Migration <|-- Analytics
+@enduml

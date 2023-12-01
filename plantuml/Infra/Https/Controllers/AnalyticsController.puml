@@ -1,0 +1,7 @@
+@startuml
+class AnalyticsController {
+    + AnalyticsController(ab:IAnalyticsService)
+    + <<async>> CreateAnalytics(a:CreateAnalyticsDTO) : Task<IActionResult>
+}
+ControllerBase <|-- AnalyticsController
+@enduml

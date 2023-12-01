@@ -1,0 +1,8 @@
+@startuml
+class AbListResponse {
+}
+class "List`1"<T> {
+}
+AbList <|-- AbListResponse
+AbListResponse --> "features<FeatureFlagResponse>" "List`1"
+@enduml

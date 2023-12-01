@@ -1,0 +1,8 @@
+@startuml
+class CreateFeatureFlag {
+}
+CreateFeatureFlag --> "Name" String
+CreateFeatureFlag --> "GroupA" String
+CreateFeatureFlag --> "GroupB" String
+CreateFeatureFlag --> "ScopeId" Int64
+@enduml

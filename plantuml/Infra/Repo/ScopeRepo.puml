@@ -1,0 +1,9 @@
+@startuml
+class ScopeRepo {
+    + ScopeRepo(db:Context)
+    + <<async>> CreateScope(u:Scope) : Task<Scope>
+    + <<async>> GetScopeById(id:long) : Task<Scope>
+    + <<async>> ListScopes() : Task<List<ScopeAdminDTO>>
+}
+IScopeRepo <|-- ScopeRepo
+@enduml

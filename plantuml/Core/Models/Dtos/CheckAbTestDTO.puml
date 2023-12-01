@@ -1,0 +1,6 @@
+@startuml
+class CheckAbTestDTO {
+}
+CheckAbTestDTO --> "AbID" Int64
+CheckAbTestDTO --> "UserID" Int64
+@enduml

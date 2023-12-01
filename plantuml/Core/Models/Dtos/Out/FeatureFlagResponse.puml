@@ -1,0 +1,6 @@
+@startuml
+class FeatureFlagResponse {
+}
+FeatureFlagResponse --> "Key" String
+FeatureFlagResponse --> "Value" String
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class CreateAnalyticsDTO {
+}
+CreateAnalyticsDTO --> "Action" String
+CreateAnalyticsDTO --> "UserId" Int64
+@enduml

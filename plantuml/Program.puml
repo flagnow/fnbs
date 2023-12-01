@@ -1,0 +1,52 @@
+@startuml
+
+package "fnbs.Core.Models" {
+
+  class AbList {
+    +Int64 Id
+    +Scope Scope
+    +Int64 ScopeId
+    +Int64 UserId
+    +User User
+    +Boolean Permission
+  }
+
+  class Analytics {
+    +Int64 Id
+    +String Action
+    +DateTime CreatedAt
+    +Int64 UserId
+    +User User
+  }
+
+  class FeatureFlag {
+    +Int64 Id
+    +String Name
+    +String GroupA
+    +String GroupB
+    +Int64 ScopeId
+    +Scope Scope
+  }
+
+  class Scope {
+    +Int64 Id
+    +String Description
+    +int AbPercentage
+    +DateTime UpDateTime
+  }
+
+  class User {
+    +Int64 Id
+    +String Name
+  }
+
+  AbList "1" -- "0..1" User : contains
+  AbList "1" -- "1" Scope : contains
+
+  Analytics "1" -- "0..1" User : contains
+
+  FeatureFlag "1" -- "1" Scope : contains
+
+}
+
+@enduml

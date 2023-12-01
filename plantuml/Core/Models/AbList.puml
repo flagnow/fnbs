@@ -1,0 +1,36 @@
+@startuml
+actor Cliente as "Administrador/Usuário"
+participant "API Controller" as Controller
+participant "Serviço" as Service
+participant "Repositório" as Repo
+database "Banco de Dados" as DB
+
+== Autenticação ==
+Cliente -> Controller : Solicita Login
+Controller -> Service : Autenticar
+Service -> DB : Verifica Usuário
+DB --> Service : Resposta de Autenticação
+Service --> Controller : Resultado da Autenticação
+Controller --> Cliente : Resposta de Login
+
+== Operações do Administrador ==
+Cliente -> Controller : Solicita Criação (Teste/Feature Flag/Escopo)
+Controller -> Service : Criar Entidade
+Service -> Repo : Persistir Dados
+Repo -> DB : Salva Dados
+DB --> Repo : Confirmação
+Repo --> Service : Resposta do Repositório
+Service --> Controller : Resultado da Criação
+Controller --> Cliente : Resposta da Operação
+
+== Operações do Usuário ==
+Cliente -> Controller : Solicita Participação no Teste
+Controller -> Service : Processar Participação
+Service -> Repo : Busca Dados do Teste
+Repo -> DB : Consulta Teste
+DB --> Repo : Dados do Teste
+Repo --> Service : Informações do Teste
+Service --> Controller : Resultado da Participação
+Controller --> Cliente : Resposta da Participação
+
+@enduml

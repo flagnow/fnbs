@@ -1,0 +1,45 @@
+@startuml
+
+actor Client
+participant "AbListController" as Controller
+participant "AbService" as Service
+participant "IAbListRepo" as Repo
+participant "IScopeRepo" as ScopeRepo
+participant "IUserRepo" as UserRepo
+database "Database" as DB
+
+Client -> Controller : GET /ablist/{userId}/{scopeID}
+activate Controller
+
+Controller -> Service : GetAbList(userId, scopeID)
+activate Service
+
+Service -> ScopeRepo : GetScopeById(scopeID)
+activate ScopeRepo
+ScopeRepo --> Service : resGetScopeById
+deactivate ScopeRepo
+
+Service -> UserRepo : GetUserBydId(userId)
+activate UserRepo
+UserRepo --> Service : resGetUserById
+deactivate UserRepo
+
+Service -> Repo : GetAbByUserAndScope(userId, scopeID)
+activate Repo
+Repo --> Service : resGetAbByUserAndScope
+deactivate Repo
+
+alt resGetAbByUserAndScope is null
+    Service -> Repo : CreateAbForUser(new AbList)
+    activate Repo
+    Repo --> Service : createResponse
+    deactivate Repo
+end
+
+Service --> Controller : response
+deactivate Service
+
+Controller --> Client : StatusCode(response.statusCode, response)
+deactivate Controller
+
+@enduml

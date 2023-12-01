@@ -30,4 +30,12 @@ public class AbListController : ControllerBase
 
         return StatusCode(response.statusCode, response);
     }
+
+    [HttpGet("{scopeID:long}")]
+    public async Task<IActionResult> GetScope(Int64 scopeID)
+    {
+        var response = await _ab.Scope(scopeID);
+
+        return StatusCode(response.statusCode, response);
+    }
 }

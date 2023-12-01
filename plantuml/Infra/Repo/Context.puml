@@ -1,0 +1,13 @@
+@startuml
+class Context {
+    + Context(options:DbContextOptions<Context>)
+}
+class "DbSet`1"<T> {
+}
+DbContext <|-- Context
+Context --> "Users<User>" "DbSet`1"
+Context --> "AbList<AbList>" "DbSet`1"
+Context --> "Scopes<Scope>" "DbSet`1"
+Context --> "Analytics<Analytics>" "DbSet`1"
+Context --> "FeatureFlag<FeatureFlag>" "DbSet`1"
+@enduml

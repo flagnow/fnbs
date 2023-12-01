@@ -1,0 +1,6 @@
+@startuml
+class ScopeAdminDTO {
+}
+Scope <|-- ScopeAdminDTO
+ScopeAdminDTO --> "Participants" Int64
+@enduml

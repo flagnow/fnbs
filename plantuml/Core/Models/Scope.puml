@@ -1,0 +1,8 @@
+@startuml
+class Scope {
+    + AbPercentage : int <<get>> <<set>>
+}
+Scope --> "Id" Int64
+Scope --> "Description" String
+Scope --> "UpDateTime" DateTime
+@enduml

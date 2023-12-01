@@ -1,0 +1,21 @@
+@startuml
+class "ResponseWrapper`1"<T> {
+    + data : T <<get>> <<set>>
+    + message : string <<get>> <<set>> = ""
+    + success : bool <<get>> <<set>> = true
+    + statusCode : int <<get>> <<set>> = 200
+    + correlationID : string <<get>> <<set>>
+    + SetSuccessStatus() : void
+}
+class Builder {
+    + Builder()
+    + SetStatus(status:int) : Builder
+    + SetData(data:T) : Builder
+    + SetMessage(message:string) : Builder
+    + SetSuccess(success:bool) : Builder
+    + SetCorrelationID(correlationID:string) : Builder
+    + SetError(error:string) : Builder
+    + Build() : ResponseWrapper<T>
+}
+"ResponseWrapper`1" +-- Builder
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+class FeatureFlagRepo {
+    + FeatureFlagRepo(db:Context)
+    + <<async>> CreateFeature(a:CreateFeatureFlag) : Task<FeatureFlag>
+    + <<async>> GetAllFlagsFromScope(scopeId:long) : Task<List<FeatureFlag>>
+    + <<async>> UpdateFeature(scopeId:long, a:CreateFeatureFlag) : Task<FeatureFlag>
+}
+IFeatureFlagRepo <|-- FeatureFlagRepo
+@enduml

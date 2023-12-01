@@ -1,0 +1,8 @@
+@startuml
+class UserRepo {
+    + UserRepo(db:Context)
+    + <<async>> CreateUser(u:User) : Task<User>
+    + <<async>> GetUserBydId(id:long) : Task<User>
+}
+IUserRepo <|-- UserRepo
+@enduml

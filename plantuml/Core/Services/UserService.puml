@@ -1,0 +1,7 @@
+@startuml
+class UserService {
+    + UserService(users:IUserRepo)
+    + <<async>> CreateUser(u:User) : Task<ResponseWrapper<User>>
+}
+IUserService <|-- UserService
+@enduml

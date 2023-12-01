@@ -3,6 +3,8 @@ using fnbs.Core.Models.Dtos;
 using fnbs.Core.Models.Dtos.Out;
 using fnbs.Core.Models.ServicesContract;
 using fnbs.Core.RepoContract;
+using fnbs.Infra.Repo;
+using Microsoft.EntityFrameworkCore;
 
 namespace fnbs.Core.Services;
 
@@ -11,12 +13,14 @@ public class AbService : IAbListService
     private readonly IAbListRepo _ab;
     private readonly IScopeRepo _scopes;
     private readonly IUserRepo _user;
+    private readonly Context _db;
 
-    public AbService(IAbListRepo ab, IScopeRepo scope, IUserRepo user)
+    public AbService(IAbListRepo ab, IScopeRepo scope, IUserRepo user, Context db)
     {
         _scopes = scope;
         _ab = ab;
         _user = user;
+        _db = db;
     }
 
     public async Task<ResponseWrapper<AbListResponse>> GetAbList(long userId, long scopeid)
@@ -63,6 +67,22 @@ public class AbService : IAbListService
         var response = new ResponseWrapper<List<AbList>>.Builder();
 
         var q = await _ab.ListAbParticipants(scopeid);
+        return response.SetData(q).Build();
+    }
+
+    public async Task<ResponseWrapper<Scope>> Scope(long scopeid)
+    {
+        var response = new ResponseWrapper<Scope>.Builder();
+
+        var q = await _db.Scopes.Select(e => new Scope()
+        {
+            AbPercentage = e.AbPercentage,
+            Description = e.Description,
+            Id = e.Id,
+            UpDateTime = e.UpDateTime,
+            Features = _db.FeatureFlag.Where(z => z.ScopeId == scopeid).ToList()
+        }).FirstOrDefaultAsync(e => e.Id == scopeid);
+
         return response.SetData(q).Build();
     }
 }

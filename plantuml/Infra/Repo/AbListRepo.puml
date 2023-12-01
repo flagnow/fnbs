@@ -1,0 +1,10 @@
+@startuml
+class AbListRepo {
+    + AbListRepo(db:Context)
+    + <<async>> GetAbById(id:long) : Task<AbListResponse>
+    + <<async>> GetAbByUserAndScope(userId:long, scopeId:long) : Task<AbListResponse>
+    + <<async>> CreateAbForUser(ab:AbList) : Task<AbListResponse>
+    + <<async>> ListAbParticipants(scopeId:long) : Task<List<AbList>>
+}
+IAbListRepo <|-- AbListRepo
+@enduml

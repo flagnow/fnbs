@@ -1,0 +1,8 @@
+@startuml
+class ScopeService {
+    + ScopeService(scope:IScopeRepo)
+    + <<async>> CreateScope(u:Scope) : Task<ResponseWrapper<Scope>>
+    + <<async>> ListScopes() : Task<ResponseWrapper<List<ScopeAdminDTO>>>
+}
+IScopesService <|-- ScopeService
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+class AbService {
+    + AbService(ab:IAbListRepo, scope:IScopeRepo, user:IUserRepo)
+    + <<async>> GetAbList(userId:long, scopeid:long) : Task<ResponseWrapper<AbListResponse>>
+    + <<async>> ListAbByScopeID(scopeid:long) : Task<ResponseWrapper<List<AbList>>>
+}
+IAbListService <|-- AbService
+@enduml

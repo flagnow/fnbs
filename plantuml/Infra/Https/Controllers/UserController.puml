@@ -1,0 +1,7 @@
+@startuml
+class UserController {
+    + UserController(logger:ILogger<UserController>, userService:IUserService)
+    + <<async>> CreateUser(u:User) : Task<IActionResult>
+}
+ControllerBase <|-- UserController
+@enduml

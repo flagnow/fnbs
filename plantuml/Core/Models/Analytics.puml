@@ -1,0 +1,23 @@
+@startuml
+actor Cliente
+participant "AnalyticsController" as Controller
+participant "AnalyticsService" as Service
+database "Banco de Dados" as DB
+
+Cliente -> Controller : POST /analytics
+activate Controller
+
+Controller -> Service : AddAnalytics(dados)
+activate Service
+
+Service -> DB : Salvar Analytics
+activate DB
+DB --> Service : Status da Operação
+deactivate DB
+
+Service --> Controller : response
+deactivate Service
+
+Controller --> Cliente : StatusCode(response.statusCode, response)
+deactivate Controller
+@enduml

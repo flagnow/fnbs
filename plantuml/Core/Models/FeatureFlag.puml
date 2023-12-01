@@ -1,0 +1,24 @@
+@startuml
+actor Cliente
+participant "FeatureFlagController" as Controller
+participant "FeatureFlagService" as Service
+participant "FeatureFlagRepo" as Repo
+database "Banco de Dados" as DB
+
+Cliente -> Controller : POST /featureflag
+activate Controller
+
+Controller -> Service : CreateFeature(dados)
+activate Service
+
+Service -> Repo : CreateFeature(dados)
+activate Repo
+Repo --> Service : FeatureFlag
+deactivate Repo
+
+Service --> Controller : response
+deactivate Service
+
+Controller --> Cliente : StatusCode(response.statusCode, response)
+deactivate Controller
+@enduml

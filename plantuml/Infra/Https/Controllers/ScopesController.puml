@@ -1,0 +1,8 @@
+@startuml
+class ScopesController {
+    + ScopesController(logger:ILogger<ScopesController>, scopes:IScopesService)
+    + <<async>> CreateScope(s:Scope) : Task<IActionResult>
+    + <<async>> ListScopes() : Task<IActionResult>
+}
+ControllerBase <|-- ScopesController
+@enduml
