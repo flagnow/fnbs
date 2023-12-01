@@ -9,4 +9,5 @@ public interface IAbListService
     Task<ResponseWrapper<List<AbList>>> ListAbByScopeID(Int64 scopeid);
 
     Task<ResponseWrapper<Scope>> Scope(Int64 scopeid);
+    Task<ResponseWrapper<Boolean>> UpdateUser(Int64 scopeid, Int64 userId);
 }

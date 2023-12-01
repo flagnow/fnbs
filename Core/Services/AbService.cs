@@ -85,4 +85,14 @@ public class AbService : IAbListService
 
         return response.SetData(q).Build();
     }
+
+    public async Task<ResponseWrapper<bool>> UpdateUser(long scopeid, long userId)
+    {
+        var response = new ResponseWrapper<Boolean>.Builder();
+
+        var q = await _db.AbList.FirstOrDefaultAsync(e => e.ScopeId == scopeid && e.UserId == userId);
+        q.Permission = !q.Permission;
+        await _db.SaveChangesAsync();
+        return response.SetData(q.Permission).Build();
+    }
 }

@@ -10,5 +10,5 @@ public class Scope
     [Required] public int AbPercentage { get; set; }
     public DateTime UpDateTime { get; set; }
 
-    public List<FeatureFlag> Features { get; set; }
+    public List<FeatureFlag>? Features { get; set; }
 }
